@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
-    "{{.ProjectName}}/internal/routes"
+    "tuhin/internal/routes"
 )
 
 func main() {

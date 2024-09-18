@@ -16,7 +16,7 @@ import (
 
 
 var (
-	 version = "0.2.0"
+	 version = "0.1.0"
 	 logo = `
  _______         __   __              __ 
 |       |.-----.|  |_|__|.----.---.-.|  |
@@ -26,16 +26,14 @@ var (
      `
 )
 func main() {
-		initFlag := flag.Bool("init", false, "Initialize a new Optical project in the current directory [required]")
-		projectName := flag.String("name", "", "Name of the project [e.g. 'my-project' or './' for current directory] [default: current directory]")
-		ghUsername := flag.String("gh", "", "GitHub username to generate the module path [required]")
+		initFlag := flag.Bool("init", false, "Initialize a new Optical project in the current directory")
+		projectName := flag.String("name", "", "Name of the project")
 		versionFlag := flag.Bool("version", false, "Print the version of Optical CLI")
-		flag.Bool("help", false, "Help for Optical CLI")
 	
 		flag.Usage = func() {
 			fmt.Fprintf(os.Stderr, "Optical CLI - A tool for generating Go Fiber API projects\n\n")
 			fmt.Fprintf(os.Stderr, "Usage:\n")
-			fmt.Fprintf(os.Stderr, "optical -gh <github-username> -init -name '<your-project-name>'\n")
+			fmt.Fprintf(os.Stderr, "optical -init -name '<your-project-name>'\n")
 			fmt.Fprintf(os.Stderr, "optical [flags]\n\n")
 			fmt.Fprintf(os.Stderr, "Flags:\n")
 			flag.PrintDefaults()
@@ -48,20 +46,14 @@ func main() {
 			fmt.Printf("Optical CLI version %s\n", version)
 			return
 		}
-	
 
 	if *initFlag {
 		name := *projectName
-		ghUsername := *ghUsername
-		if ghUsername == "" {
-			fmt.Println("❗ Please provide a GitHub username using the -gh flag to generate the module path")
-			os.Exit(1)
-		}
 		fmt.Println(logo)
-		if name == "" || name == "./" {
+		if name == "" {
 			name = filepath.Base(getCurrentDirectory())
 		}
-		err := generator.GenerateProject(name, ".",ghUsername)
+		err := generator.GenerateProject(name, ".")
 		if err != nil {
 			fmt.Printf("❗Error generating project: %v\n", err)
 			os.Exit(1)

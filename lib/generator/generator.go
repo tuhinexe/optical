@@ -12,7 +12,7 @@ import (
 var templateFS embed.FS
 
 
-func GenerateProject(name, path string,ghUsername string) error {
+func GenerateProject(name, path string) error {
 	projectPath := filepath.Join(path, name)
 
 	if err := os.MkdirAll(projectPath, os.ModePerm); err != nil {
@@ -38,7 +38,7 @@ func GenerateProject(name, path string,ghUsername string) error {
 	}
 
 	for filePath, templateName := range files {
-		if err := generateFileFromTemplate(projectPath, filePath, templateName, name,ghUsername); err != nil {
+		if err := generateFileFromTemplate(projectPath, filePath, templateName, name); err != nil {
 			return fmt.Errorf("❗Failed to create %s: %w", filePath, err)
 		}
 	}
@@ -46,7 +46,7 @@ func GenerateProject(name, path string,ghUsername string) error {
 	return nil
 }
 
-func generateFileFromTemplate(projectPath, filePath, templateName, projectName string,ghUsername string) error {
+func generateFileFromTemplate(projectPath, filePath, templateName, projectName string) error {
 	fullPath := filepath.Join(projectPath, filePath)
 
 	tmplContent, err := templateFS.ReadFile(filepath.Join("templates", templateName))
@@ -67,10 +67,8 @@ func generateFileFromTemplate(projectPath, filePath, templateName, projectName s
 
 	data := struct {
 		ProjectName string
-		GitHubUsername string
 	}{
 		ProjectName: projectName,
-		GitHubUsername: ghUsername,
 	}
 
 	if err := tmpl.Execute(file, data); err != nil {

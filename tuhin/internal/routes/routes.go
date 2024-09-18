@@ -5,7 +5,7 @@ import (
     "log"
 
     "github.com/gofiber/fiber/v2"
-    "{{.ProjectName}}/internal/handlers"
+    "tuhin/internal/handlers"
 )
 
 func SetupRoutes(app *fiber.App) {

@@ -3,7 +3,7 @@ package handlers
 
 import (
     "github.com/gofiber/fiber/v2"
-    "{{.ProjectName}}/internal/services")
+    "tuhin/internal/services")
 
 
 func Greet(c *fiber.Ctx) error {

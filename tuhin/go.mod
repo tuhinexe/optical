@@ -1,4 +1,4 @@
-module {{.ProjectName}}
+module tuhin
 
 go 1.19
 
