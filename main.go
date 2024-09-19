@@ -94,7 +94,7 @@ To run the project follow these steps:
 func getCurrentDirectory() string {
 	dir, err := os.Getwd()
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("❗Error getting current directory:", err)
 		os.Exit(1)
 	}
 	return dir
