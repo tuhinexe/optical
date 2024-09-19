@@ -4,8 +4,6 @@ description: Propose a feature or improvement for Optical.
 labels: ["📝 Proposal", "✏️ Feature"]
 
 body:
-  - type: markdown
-
   - type: textarea
     id: description
     attributes:
