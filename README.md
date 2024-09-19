@@ -11,6 +11,10 @@
 <a href="https://github.com/TuhinBar/optical/blob/main/LICENSE"> 
   <img src="https://img.shields.io/github/license/TuhinBar/optical"/>
 </a>
+<a href="https://github.com/TuhinBar/optical/actions"> 
+  <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/TuhinBar/optical/.github%2Fworkflows%2Fbuild.yml">
+</a>
+
   
   </h1>
 
