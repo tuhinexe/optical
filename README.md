@@ -19,7 +19,7 @@
   </h1>
 
 <!--![Go Report Card](https://goreportcard.com/badge/github.com/TuhinBar/optical) -->
-Optical is a CLI tool that generates a Go [Fiber](https://github.com/gofiber/fiber) project template. It is inspired by express-generator, a tool that produces a Node.js project template for the Express.js framework.
+Optical is a CLI tool that generates a Go [Fiber](https://github.com/gofiber/fiber) project template. It is inspired by [express-generator](https://expressjs.com/en/starter/generator.html), a tool that produces a Node.js project template for the Express.js framework.
 
 It is named Optical because it works with Fiber and combines 'fiber-optic'. Silly.
 
