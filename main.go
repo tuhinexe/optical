@@ -5,15 +5,13 @@
 package main
 
 import (
+	"errors"
 	"flag"
 	"fmt"
 	"os"
-	"path/filepath"
 
-	"github.com/TuhinBar/optical/lib/generator"
+	"github.com/charmbracelet/huh"
 )
-
-
 
 var (
 	 version = "0.2.0"
@@ -26,16 +24,14 @@ var (
      `
 )
 func main() {
-		initFlag := flag.Bool("init", false, "Initialize a new Optical project in the current directory [required]")
-		projectName := flag.String("name", "", "Name of the project [e.g. 'my-project' or './' for current directory] [default: current directory]")
-		ghUsername := flag.String("gh", "", "GitHub username to generate the module path [required]")
+	createFlag := flag.String("create","", "Creates a new Optical Project")
 		versionFlag := flag.Bool("version", false, "Print the version of Optical CLI")
 		flag.Bool("help", false, "Help for Optical CLI")
 	
 		flag.Usage = func() {
 			fmt.Fprintf(os.Stderr, "Optical CLI - A tool for generating Go Fiber API projects\n\n")
 			fmt.Fprintf(os.Stderr, "Usage:\n")
-			fmt.Fprintf(os.Stderr, "optical -gh <github-username> -init -name '<your-project-name>'\n")
+			fmt.Fprintf(os.Stderr, "optical create\n")
 			fmt.Fprintf(os.Stderr, "optical [flags]\n\n")
 			fmt.Fprintf(os.Stderr, "Flags:\n")
 			flag.PrintDefaults()
@@ -43,60 +39,65 @@ func main() {
 	
 		flag.Parse()
 	
-		// Check for version flag
 		if *versionFlag {
 			fmt.Printf("Optical CLI version %s\n", version)
 			return
 		}
+
 	
 
-	if *initFlag {
-		name := *projectName
-		ghUsername := *ghUsername
-		if ghUsername == "" {
-			fmt.Println("❗ Please provide a GitHub username using the -gh flag to generate the module path")
-			os.Exit(1)
-		}
+	type Prompts struct{
+		projectName string;
+		ghUserName string;
+		dbType  string;
+
+	}
+
+	prompts := Prompts{}
+
+	if *createFlag != "" {
+		println(*createFlag)
 		fmt.Println(logo)
-		if name == "" || name == "./" {
-			name = filepath.Base(getCurrentDirectory())
-		}
-		err := generator.GenerateProject(name, ".",ghUsername)
+
+		form := huh.NewForm(
+			huh.NewGroup(
+				huh.NewInput().Title("What is the name of your project?").Value(&prompts.projectName).Validate(func(str string) error {
+					if str == "" {
+						return errors.New("project name can't be empty")
+
+					}
+					return nil
+				}),
+			),
+		)
+
+		err := form.Run()
+
 		if err != nil {
-			fmt.Printf("❗Error generating project: %v\n", err)
-			os.Exit(1)
+			 fmt.Println("There is a error creating your project")
+			 return
 		}
-		fmt.Printf("🎉 Optical project created successfully\n")
 
-		fmt.Println(`
-To run the project follow these steps:
-1. cd ` + name + `
-2. go mod tidy
-3. go run ./cmd/main.go
-		`)
+		fmt.Println(prompts.projectName)
+
+
+		
 	} else {
-
-		
-	fmt.Println(logo)
-
+		fmt.Println(logo)
 		flag.Usage()
-		os.Exit(1)
 
 		
-
-		
-		
-
-	  
-	}
-}
-
-func getCurrentDirectory() string {
-	dir, err := os.Getwd()
-	if err != nil {
-		fmt.Println("❗Error getting current directory:", err)
 		os.Exit(1)
 	}
-	return dir
+	
 }
+
+// func getCurrentDirectory() string {
+// 	dir, err := os.Getwd()
+// 	if err != nil {
+// 		fmt.Println("❗Error getting current directory:", err)
+// 		os.Exit(1)
+// 	}
+// 	return dir
+// }
 
