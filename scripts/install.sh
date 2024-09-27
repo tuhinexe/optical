@@ -11,7 +11,7 @@ go install github.com/TuhinBar/optical@latest
 
 if [ $? -eq 0 ]; then
     echo "Optical CLI tool installed successfully!"
-    echo "You can now use 'optical -init -name <your-project>' to create a new Optical project."
+    echo "You can now use 'optical -create' to create a new Optical project."
 else
     echo "Installation failed. Please check your Go environment and try again."
     exit 1
