@@ -49,7 +49,19 @@ curl -sSL https://raw.githubusercontent.com/TuhinBar/optical/main/scripts/instal
 To create a new Optical project:
 
 ```bash
-optical -gh <guthub-username> -init -name <your-project-name>
+optical -create
+```
+
+```bash
+
+Optical CLI version 0.5.0
+What is the name of your project?(e.g 'my-fiber-api','./')                                     
+> <Your-project-name>                                                                                  
+                                                                                                 
+Enter your GitHub username.                                                                    
+> <your-github-username>                                                                                     
+                                                                                                 
+shift+tab back • enter submit
 ```
 or
 
@@ -78,7 +90,17 @@ To set up your project further, refer to the [Fiber Official Docs](https://docs.
 
 If you run a command like:
 ```bash
-optical -gh TuhinBar -init -name cyber-fiber
+optical -create
+```
+```bash
+Optical CLI version 0.5.0
+  What is the name of your project?(e.g 'my-fiber-api','./')                                     
+  > cyber-fiber                                                                                  
+                                                                                                 
+┃ Enter your GitHub username.                                                                    
+┃ > TuhinBar                                                                                     
+                                                                                                 
+shift+tab back • enter submit
 ```
 
 It will create a new Optical project in a directory named `cyber-fiber` with `go.mod` like this :
@@ -90,7 +112,7 @@ go 1.22
 require github.com/gofiber/fiber/v2 v2.52.5
 ```
 
-For more detailed usage instructions, please refer to [USAGE.md](docs/USAGE.md).
+Please refer to [USAGE.md](docs/USAGE.md) for more detailed usage instructions.
 
 ## 👥 Contributing
 
