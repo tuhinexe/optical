@@ -5,12 +5,13 @@
 package main
 
 import (
-	"errors"
 	"flag"
 	"fmt"
 	"os"
+	"path/filepath"
 
-	"github.com/charmbracelet/huh"
+	"github.com/TuhinBar/optical/lib/generator"
+	"github.com/TuhinBar/optical/lib/helper"
 )
 
 var (
@@ -20,68 +21,57 @@ var (
 |       |.-----.|  |_|__|.----.---.-.|  |
 |   -   ||  _  ||   _|  ||  __|  _  ||  |
 |_______||   __||____|__||____|___._||__|
-         |__|                            
-     `
+         |__|                            `
 )
+
+
+
+
 func main() {
-	createFlag := flag.String("create","", "Creates a new Optical Project")
-		versionFlag := flag.Bool("version", false, "Print the version of Optical CLI")
-		flag.Bool("help", false, "Help for Optical CLI")
-	
-		flag.Usage = func() {
-			fmt.Fprintf(os.Stderr, "Optical CLI - A tool for generating Go Fiber API projects\n\n")
-			fmt.Fprintf(os.Stderr, "Usage:\n")
-			fmt.Fprintf(os.Stderr, "optical create\n")
-			fmt.Fprintf(os.Stderr, "optical [flags]\n\n")
-			fmt.Fprintf(os.Stderr, "Flags:\n")
-			flag.PrintDefaults()
-		}
-	
-		flag.Parse()
-	
-		if *versionFlag {
-			fmt.Printf("Optical CLI version %s\n", version)
-			return
-		}
+	createFlag := flag.Bool("create",false, "Creates a new Optical Project")
+	versionFlag := flag.Bool("version", false, "Print the version of Optical CLI")
+	flag.Bool("help", false, "Help for Optical CLI")
 
-	
-
-	type Prompts struct{
-		projectName string;
-		ghUserName string;
-		dbType  string;
-
+	flag.Usage = func() {
+		helper.PrintFlags()
 	}
 
-	prompts := Prompts{}
+	flag.Parse()
+	
+	if *versionFlag {
+		helper.PrintVersion(version)
+		return
+	}
 
-	if *createFlag != "" {
-		println(*createFlag)
+
+
+	if *createFlag {
 		fmt.Println(logo)
+		helper.PrintVersion(version)
 
-		form := huh.NewForm(
-			huh.NewGroup(
-				huh.NewInput().Title("What is the name of your project?").Value(&prompts.projectName).Validate(func(str string) error {
-					if str == "" {
-						return errors.New("project name can't be empty")
-
-					}
-					return nil
-				}),
-			),
-		)
-
+		form,prompts := helper.CreateForm()
+		
 		err := form.Run()
 
 		if err != nil {
-			 fmt.Println("There is a error creating your project")
+			 fmt.Println("There is an error creating your project")
 			 return
 		}
 
-		fmt.Println(prompts.projectName)
+		if prompts.ProjectName == "./" || prompts.ProjectName == "" {
+			prompts.ProjectName = filepath.Base(helper.GetCurrentDirectory())
+			
+		}
 
+		projectErr := generator.GenerateProject(prompts.ProjectName,".",prompts.GhUserName)
 
-		
+		if projectErr != nil {
+			fmt.Printf("❗Error generating project: %v\n", projectErr)
+			os.Exit(1)
+		}
+
+		helper.PrintSuccessMsg(prompts.ProjectName)
+
 	} else {
 		fmt.Println(logo)
 		flag.Usage()
@@ -91,13 +81,4 @@ func main() {
 	}
 	
 }
-
-// func getCurrentDirectory() string {
-// 	dir, err := os.Getwd()
-// 	if err != nil {
-// 		fmt.Println("❗Error getting current directory:", err)
-// 		os.Exit(1)
-// 	}
-// 	return dir
-// }
 
