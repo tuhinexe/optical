@@ -5,6 +5,9 @@
 ##
 
 <h1 align="center">
+  <a href="https://pkg.go.dev/github.com/TuhinBar/optical">
+    <img src="https://img.shields.io/badge/%F0%9F%93%9A%20godoc-pkg-00ACD7.svg?color=00ACD7&style=flat-square">
+  </a>
 <a href="https://github.com/TuhinBar/optical/releases"> 
   <img src="https://img.shields.io/github/v/release/TuhinBar/optical"/>
 </a>
