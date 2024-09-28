@@ -57,14 +57,21 @@ optical -create
 
 ```bash
 
-Optical CLI version 0.5.0
-What is the name of your project?(e.g 'my-fiber-api','./')                                     
-> <Your-project-name>                                                                                  
+Optical CLI version 0.6.0
+┃ What is the name of your project?(e.g 'my-fiber-api','./')                                     
+┃ A new folder with this name will be created.                                                   
+┃ > <your-project-name>                                                                                          
                                                                                                  
-Enter your GitHub username.                                                                    
-> <your-github-username>                                                                                     
+  Enter your GitHub username.                                                                    
+  This is required to create the go.mod file                                                     
+  > <your-gitub-username>                                                                                           
                                                                                                  
-shift+tab back • enter submit
+  Do you have air installed ?                                                                    
+  Air is required for auto-reload                                                                
+    Yes                                                                                          
+  > No                                                                                           
+                                                                                                 
+enter next
 ```
 or
 
@@ -77,7 +84,7 @@ After creating the project run this:
 ```bash
 cd <your-project-name>
 go mod tidy
-go run ./cmd
+air
 ```
 
 It will run your Fiber App and the output should look like this:
@@ -97,13 +104,20 @@ optical -create
 ```
 ```bash
 Optical CLI version 0.5.0
-  What is the name of your project?(e.g 'my-fiber-api','./')                                     
-  > cyber-fiber                                                                                  
+┃ What is the name of your project?(e.g 'my-fiber-api','./')                                     
+┃ A new folder with this name will be created.                                                   
+┃ > cyber-fiber                                                                                             
                                                                                                  
-┃ Enter your GitHub username.                                                                    
-┃ > TuhinBar                                                                                     
+  Enter your GitHub username.                                                                    
+  This is required to create the go.mod file                                                     
+  > TuhinBar                                                                                             
                                                                                                  
-shift+tab back • enter submit
+  Do you have air installed ?                                                                    
+  Air is required for auto-reload                                                                
+    Yes                                                                                          
+  > No                                                                                           
+                                                                                                 
+enter next
 ```
 
 It will create a new Optical project in a directory named `cyber-fiber` with `go.mod` like this :
