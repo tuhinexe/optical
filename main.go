@@ -63,7 +63,7 @@ func main() {
 			
 		}
 
-		projectErr := generator.GenerateProject(prompts.ProjectName,".",prompts.GhUserName)
+		projectErr := generator.GenerateProject(prompts.ProjectName,".",prompts.GhUserName,prompts.HasAir)
 
 		if projectErr != nil {
 			fmt.Printf("❗Error generating project: %v\n", projectErr)
