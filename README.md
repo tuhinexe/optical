@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/85868593/368620635-e9bcfdbe-1f4e-44cc-b3f0-9e5caffe6e17.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240918%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240918T145201Z&X-Amz-Expires=300&X-Amz-Signature=cbd77e7e782b9bf7d8fe8ed026b11ff8ded927dc46df9348aa51d0d17a5835cf&X-Amz-SignedHeaders=host&actor_id=85868593&key_id=0&repo_id=859126734" />
+  <img src="https://p82.cooltext.com/Rendered/Cool%20Text%20-%20OPTICAL%20467187224148174.png" />
 </p>
 
 ##
