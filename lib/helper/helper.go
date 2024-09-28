@@ -4,6 +4,8 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"io"
+	"net/http"
 	"os"
 	"time"
 
@@ -77,8 +79,7 @@ func PrintSuccessMsg(name string) {
 To run the project follow these steps:
 1. cd ` + name + `
 2. go mod tidy
-3. air
-		`)
+3. air`)
 }
 
 func ShowLoadingIndicator(done chan bool) {
@@ -90,9 +91,34 @@ func ShowLoadingIndicator(done chan bool) {
 			fmt.Print("\r")
 			return
 		default:
-			fmt.Printf("\rInstalling air... %c", loadingChars[i%len(loadingChars)])
+			fmt.Printf("\rCreating your project... %c", loadingChars[i%len(loadingChars)])
 			i++
 			time.Sleep(100 * time.Millisecond)
 		}
 	}
+}
+
+
+func FetchTemplateFromGithub(templateName string) (string,error) {
+	fileUrl := fmt.Sprintf("https://raw.githubusercontent.com/TuhinBar/optical/main/lib/templates/%s", templateName)
+
+	resp, err := http.Get(fileUrl)
+
+	if err != nil {
+		return "", fmt.Errorf("❗Failed to download template %s: %w", templateName, err)
+	}
+
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return "", fmt.Errorf("❗Failed to download template %s: HTTP status %d", templateName, resp.StatusCode)
+	}
+
+	body,err := io.ReadAll(resp.Body)
+
+	if err != nil {
+		return "",fmt.Errorf("❗Failed to read response body for template %s: %w", templateName, err)
+	}
+
+	return string(body),nil
 }

@@ -74,6 +74,7 @@ func main() {
 
 	} else {
 		fmt.Println(logo)
+		helper.PrintVersion(version)
 		flag.Usage()
 
 		
