@@ -57,7 +57,7 @@ optical -create
 
 ```bash
 
-Optical CLI version 0.6.0
+Optical CLI version 0.7.0
 ┃ What is the name of your project?(e.g 'my-fiber-api','./')                                     
 ┃ A new folder with this name will be created.                                                   
 ┃ > <your-project-name>                                                                                          
@@ -103,7 +103,7 @@ If you run a command like:
 optical -create
 ```
 ```bash
-Optical CLI version 0.5.0
+Optical CLI version 0.7.0
 ┃ What is the name of your project?(e.g 'my-fiber-api','./')                                     
 ┃ A new folder with this name will be created.                                                   
 ┃ > cyber-fiber                                                                                             
