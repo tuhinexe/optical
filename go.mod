@@ -1,4 +1,4 @@
-module github.com/TuhinBar/optical
+module github.com/tuhinexe/optical
 
 go 1.23
 
