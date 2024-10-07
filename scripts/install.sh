@@ -6,7 +6,7 @@ then
     exit 1
 fi
 
-go install github.com/TuhinBar/optical@latest
+go install github.com/tuhinexe/optical@latest
 
 
 if [ $? -eq 0 ]; then

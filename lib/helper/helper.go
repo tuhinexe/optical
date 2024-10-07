@@ -100,7 +100,7 @@ func ShowLoadingIndicator(done chan bool) {
 
 
 func FetchTemplateFromGithub(templateName string) (string,error) {
-	fileUrl := fmt.Sprintf("https://raw.githubusercontent.com/TuhinBar/optical/main/lib/templates/%s", templateName)
+	fileUrl := fmt.Sprintf("https://raw.githubusercontent.com/tuhinexe/optical/main/lib/templates/%s", templateName)
 
 	resp, err := http.Get(fileUrl)
 

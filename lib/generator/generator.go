@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"text/template"
 
-	"github.com/TuhinBar/optical/lib/helper"
+	"github.com/tuhinexe/optical/lib/helper"
 )
 
 

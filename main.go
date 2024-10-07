@@ -10,13 +10,13 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/TuhinBar/optical/lib/generator"
-	"github.com/TuhinBar/optical/lib/helper"
+	"github.com/tuhinexe/optical/lib/generator"
+	"github.com/tuhinexe/optical/lib/helper"
 )
 
 var (
-	 version = "0.7.0"
-	 logo = `
+version = "0.7.0"
+logo = `
  _______         __   __              __ 
 |       |.-----.|  |_|__|.----.---.-.|  |
 |   -   ||  _  ||   _|  ||  __|  _  ||  |
