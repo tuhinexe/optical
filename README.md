@@ -5,23 +5,23 @@
 ##
 
 <h1 align="center">
-  <a href="https://pkg.go.dev/github.com/TuhinBar/optical">
+  <a href="https://pkg.go.dev/github.com/tuhinexe/optical">
     <img src="https://img.shields.io/badge/%F0%9F%93%9A%20godoc-pkg-00ACD7.svg?color=00ACD7&style=flat-square">
   </a>
-<a href="https://github.com/TuhinBar/optical/releases"> 
-  <img src="https://img.shields.io/github/v/release/TuhinBar/optical"/>
+<a href="https://github.com/tuhinexe/optical/releases"> 
+  <img src="https://img.shields.io/github/v/release/tuhinexe/optical"/>
 </a>
-<a href="https://github.com/TuhinBar/optical/blob/main/LICENSE"> 
-  <img src="https://img.shields.io/github/license/TuhinBar/optical"/>
+<a href="https://github.com/tuhinexe/optical/blob/main/LICENSE"> 
+  <img src="https://img.shields.io/github/license/tuhinexe/optical"/>
 </a>
-<a href="https://github.com/TuhinBar/optical/actions"> 
-  <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/TuhinBar/optical/.github%2Fworkflows%2Fbuild.yml">
+<a href="https://github.com/tuhinexe/optical/actions"> 
+  <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/tuhinexe/optical/.github%2Fworkflows%2Fbuild.yml">
 </a>
 
   
   </h1>
 
-<!--![Go Report Card](https://goreportcard.com/badge/github.com/TuhinBar/optical) -->
+<!--![Go Report Card](https://goreportcard.com/badge/github.com/tuhinexe/optical) -->
 Optical is a CLI tool that generates a Go [Fiber](https://github.com/gofiber/fiber) project template. It is inspired by [express-generator](https://expressjs.com/en/starter/generator.html), a tool that produces a Node.js project template for the Express.js framework.
 
 It is named Optical because it works with Fiber and combines 'fiber-optic'. Silly.
@@ -38,13 +38,13 @@ If you do not have Go installed on your device, you are required to install it t
 You can install Optical CLI using Go:
 
 ```bash
-go install github.com/TuhinBar/optical@latest
+go install github.com/tuhinexe/optical@latest
 ```
 
 Or you can use our installation script:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/TuhinBar/optical/main/scripts/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/tuhinexe/optical/main/scripts/install.sh | bash
 ```
 
 ## ⚡Usage
@@ -110,7 +110,7 @@ Optical CLI version 0.7.0
                                                                                                  
   Enter your GitHub username.                                                                    
   This is required to create the go.mod file                                                     
-  > TuhinBar                                                                                             
+  > tuhinexe                                                                                             
                                                                                                  
   Do you have air installed ?                                                                    
   Air is required for auto-reload                                                                
@@ -122,7 +122,7 @@ enter next
 
 It will create a new Optical project in a directory named `cyber-fiber` with `go.mod` like this :
 ```bash
-module github.com/TuhinBar/cyber-fiber
+module github.com/tuhinexe/cyber-fiber
 
 go 1.22
 
