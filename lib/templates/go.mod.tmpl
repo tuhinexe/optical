@@ -1,8 +1,12 @@
 module github.com/{{.GitHubUsername}}/{{.ProjectName}}
 
-go 1.22
+go 1.23
 
 require (
         github.com/gofiber/fiber/v2 v2.52.5
         github.com/air-verse/air v1.52.3 // indirect
+        github.com/lib/pq v1.10.9
+        github.com/joho/godotenv
+	go.mongodb.org/mongo-driver/mongo"
+	go.mongodb.org/mongo-driver/mongo/options"
 )
