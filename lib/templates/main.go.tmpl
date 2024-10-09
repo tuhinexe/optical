@@ -4,15 +4,24 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+    "github.com/joho/godotenv"
     "github.com/{{.GitHubUsername}}/{{.ProjectName}}/routes"
 )
 
 func main() {
+    if err := godotenv.Load(); err != nil {
+		log.Fatalf("Error loading .env file: %v", err)
+	}
+    port := os.Getenv("PORT")
 	app := fiber.New()
 
     router.SetupRoutes(app)
 
-    log.Fatal(app.Listen(":5000"))
+    if port == "" {
+        port = "5000"
+    }
+
+    log.Fatal(app.Listen(":" + port))
 
 	
 }
