@@ -57,7 +57,7 @@ optical -create
 
 ```bash
 
-Optical CLI version 0.7.0
+Optical CLI version 1.0.0
 ┃ What is the name of your project?(e.g 'my-fiber-api','./')                                     
 ┃ A new folder with this name will be created.                                                   
 ┃ > <your-project-name>                                                                                          
@@ -66,7 +66,7 @@ Optical CLI version 0.7.0
   This is required to create the go.mod file                                                     
   > <your-gitub-username>                                                                                           
                                                                                                  
-  Do you have air installed ?                                                                    
+  Do you have air installed?                                                                    
   Air is required for auto-reload                                                                
     Yes                                                                                          
   > No                                                                                           
@@ -103,7 +103,7 @@ If you run a command like:
 optical -create
 ```
 ```bash
-Optical CLI version 0.7.0
+Optical CLI version 1.0.0
 ┃ What is the name of your project?(e.g 'my-fiber-api','./')                                     
 ┃ A new folder with this name will be created.                                                   
 ┃ > cyber-fiber                                                                                             
@@ -124,9 +124,14 @@ It will create a new Optical project in a directory named `cyber-fiber` with `go
 ```bash
 module github.com/tuhinexe/cyber-fiber
 
-go 1.22
+go 1.23
 
-require github.com/gofiber/fiber/v2 v2.52.5
+require (
+	github.com/gofiber/fiber/v2 v2.52.5
+	github.com/joho/godotenv v1.5.1
+	github.com/lib/pq v1.10.9
+	go.mongodb.org/mongo-driver v1.16.1
+)
 ```
 
 Please refer to [USAGE.md](docs/USAGE.md) for more detailed usage instructions.
