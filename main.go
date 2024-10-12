@@ -15,8 +15,8 @@ import (
 )
 
 var (
-version = "1.0.0"
-logo = `
+	version = "1.0.0"
+	logo    = `
  _______         __   __              __ 
 |       |.-----.|  |_|__|.----.---.-.|  |
 |   -   ||  _  ||   _|  ||  __|  _  ||  |
@@ -24,11 +24,8 @@ logo = `
          |__|                            `
 )
 
-
-
-
 func main() {
-	createFlag := flag.Bool("create",false, "Creates a new Optical Project")
+	createFlag := flag.Bool("create", false, "Creates a new Optical Project")
 	versionFlag := flag.Bool("version", false, "Print the version of Optical CLI")
 	flag.Bool("help", false, "Help for Optical CLI")
 
@@ -37,33 +34,31 @@ func main() {
 	}
 
 	flag.Parse()
-	
+
 	if *versionFlag {
 		helper.PrintVersion(version)
 		return
 	}
 
-
-
 	if *createFlag {
 		fmt.Println(logo)
 		helper.PrintVersion(version)
 
-		form,prompts := helper.CreateForm()
-		
+		form, prompts := helper.CreateForm()
+
 		err := form.Run()
 
 		if err != nil {
-			 fmt.Println("There is an error creating your project")
-			 return
+			fmt.Println("There is an error creating your project")
+			return
 		}
 
 		if prompts.ProjectName == "./" || prompts.ProjectName == "" {
 			prompts.ProjectName = filepath.Base(helper.GetCurrentDirectory())
-			
+
 		}
 
-		projectErr := generator.GenerateProject(prompts.ProjectName,".",prompts.GhUserName,prompts.HasAir)
+		projectErr := generator.GenerateProject(prompts.ProjectName, ".", prompts.GhUserName, prompts.HasAir)
 
 		if projectErr != nil {
 			fmt.Printf("❗Error generating project: %v\n", projectErr)
@@ -77,9 +72,7 @@ func main() {
 		helper.PrintVersion(version)
 		flag.Usage()
 
-		
 		os.Exit(1)
 	}
-	
-}
 
+}

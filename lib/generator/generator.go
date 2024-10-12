@@ -10,10 +10,7 @@ import (
 	"github.com/tuhinexe/optical/lib/helper"
 )
 
-
-
-
-func GenerateProject(name, path string,ghUsername string,hasAir bool) error {
+func GenerateProject(name, path string, ghUsername string, hasAir bool) error {
 
 	done := make(chan bool)
 	go helper.ShowLoadingIndicator(done)
@@ -25,7 +22,7 @@ func GenerateProject(name, path string,ghUsername string,hasAir bool) error {
 		return fmt.Errorf("❗ Failed to create project directory: %w", err)
 	}
 
-	dirs := []string{ "handlers", "middleware", "models","routes","services", "config"}
+	dirs := []string{"handlers", "middleware", "models", "routes", "services", "config"}
 	for _, dir := range dirs {
 		if err := os.MkdirAll(filepath.Join(projectPath, dir), os.ModePerm); err != nil {
 			done <- true
@@ -35,28 +32,28 @@ func GenerateProject(name, path string,ghUsername string,hasAir bool) error {
 
 	files := map[string]string{
 		"main.go":                  "main.go.tmpl",
-		"handlers/handler.go":   	"handler.go.tmpl",
+		"handlers/handler.go":      "handler.go.tmpl",
 		"middleware/middleware.go": "middleware.go.tmpl",
-		"services/service.go":   	"service.go.tmpl",
-		"models/models.go":      	"models.go.tmpl",
-		"routes/routes.go":      	"routes.go.tmpl",
-		"config/config.go":      	"config.go.tmpl",
-		"go.mod":                	"go.mod.tmpl",
-		".air.toml":			 	".air.toml.tmpl",
+		"services/service.go":      "service.go.tmpl",
+		"models/models.go":         "models.go.tmpl",
+		"routes/routes.go":         "routes.go.tmpl",
+		"config/config.go":         "config.go.tmpl",
+		"go.mod":                   "go.mod.tmpl",
+		".air.toml":                ".air.toml.tmpl",
 	}
-	
+
 	for filePath, templateName := range files {
-		if err := generateFileFromTemplate(projectPath, filePath, templateName, name,ghUsername); err != nil {
+		if err := generateFileFromTemplate(projectPath, filePath, templateName, name, ghUsername); err != nil {
 			done <- true
 			return fmt.Errorf("❗Failed to create %s: %w", filePath, err)
 		}
-	};
-	
+	}
+
 	if !hasAir {
-		
+
 		cmd := exec.Command("go", "install", "github.com/air-verse/air@latest")
 		cmd.Dir = projectPath
-	
+
 		if output, err := cmd.CombinedOutput(); err != nil {
 			done <- true
 			fmt.Printf("❗Failed to install air in your project: %v\nOutput: %s\n", err, string(output))
@@ -68,11 +65,10 @@ func GenerateProject(name, path string,ghUsername string,hasAir bool) error {
 		done <- true
 	}
 
-
 	return nil
 }
 
-func generateFileFromTemplate(projectPath, filePath, templateName, projectName string,ghUsername string) error {
+func generateFileFromTemplate(projectPath, filePath, templateName, projectName string, ghUsername string) error {
 	fullPath := filepath.Join(projectPath, filePath)
 
 	tmplContent, err := helper.FetchTemplateFromGithub(templateName)
@@ -92,10 +88,10 @@ func generateFileFromTemplate(projectPath, filePath, templateName, projectName s
 	defer file.Close()
 
 	data := struct {
-		ProjectName string
+		ProjectName    string
 		GitHubUsername string
 	}{
-		ProjectName: projectName,
+		ProjectName:    projectName,
 		GitHubUsername: ghUsername,
 	}
 

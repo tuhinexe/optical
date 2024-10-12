@@ -11,14 +11,13 @@ import (
 
 	"github.com/charmbracelet/huh"
 )
-type Prompts struct{
-	ProjectName string;
-	GhUserName string;
-	HasAir bool
-	DbType  string;
 
+type Prompts struct {
+	ProjectName string
+	GhUserName  string
+	HasAir      bool
+	DbType      string
 }
-
 
 func PrintVersion(version string) {
 	fmt.Printf("Optical CLI version %s\n", version)
@@ -34,7 +33,6 @@ func PrintFlags() {
 	flag.PrintDefaults()
 }
 
-
 func GetCurrentDirectory() string {
 	dir, err := os.Getwd()
 	if err != nil {
@@ -44,7 +42,7 @@ func GetCurrentDirectory() string {
 	return dir
 }
 
-func CreateForm() (*huh.Form,*Prompts) {
+func CreateForm() (*huh.Form, *Prompts) {
 	prompts := Prompts{}
 	form := huh.NewForm(
 		huh.NewGroup(
@@ -62,20 +60,19 @@ func CreateForm() (*huh.Form,*Prompts) {
 				return nil
 			}),
 			huh.NewSelect[bool]().Title("Do you have air installed ?").Description("Air is required for auto-reload").Options(
-				huh.NewOption("Yes",true),
-				huh.NewOption("No",false),
+				huh.NewOption("Yes", true),
+				huh.NewOption("No", false),
 			).Value(&prompts.HasAir),
 		),
 	)
 
-	return form,&prompts
+	return form, &prompts
 }
-
 
 func PrintSuccessMsg(name string) {
 	fmt.Printf("🎉 Optical project created successfully\n")
 
-		fmt.Println(`
+	fmt.Println(`
 To run the project follow these steps:
 1. cd ` + name + `
 2. go mod tidy
@@ -98,8 +95,7 @@ func ShowLoadingIndicator(done chan bool) {
 	}
 }
 
-
-func FetchTemplateFromGithub(templateName string) (string,error) {
+func FetchTemplateFromGithub(templateName string) (string, error) {
 	fileUrl := fmt.Sprintf("https://raw.githubusercontent.com/tuhinexe/optical/main/lib/templates/%s", templateName)
 
 	resp, err := http.Get(fileUrl)
@@ -114,11 +110,11 @@ func FetchTemplateFromGithub(templateName string) (string,error) {
 		return "", fmt.Errorf("❗Failed to download template %s: HTTP status %d", templateName, resp.StatusCode)
 	}
 
-	body,err := io.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 
 	if err != nil {
-		return "",fmt.Errorf("❗Failed to read response body for template %s: %w", templateName, err)
+		return "", fmt.Errorf("❗Failed to read response body for template %s: %w", templateName, err)
 	}
 
-	return string(body),nil
+	return string(body), nil
 }
