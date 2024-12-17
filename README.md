@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/docs/images/optical-logo.png />
+  <img src="./docs/images/optical-logo.png" />
 </p>
 
 ##
