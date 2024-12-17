@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://p82.cooltext.com/Rendered/Cool%20Text%20-%20OPTICAL%20467187224148174.png" />
+  <img src="/docs/images/optical-logo.png />
 </p>
 
 ##
@@ -18,10 +18,10 @@
   <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/tuhinexe/optical/.github%2Fworkflows%2Fbuild.yml">
 </a>
 
-  
   </h1>
 
 <!--![Go Report Card](https://goreportcard.com/badge/github.com/tuhinexe/optical) -->
+
 Optical is a CLI tool that generates a Go [Fiber](https://github.com/gofiber/fiber) project template. It is inspired by [express-generator](https://expressjs.com/en/starter/generator.html), a tool that produces a Node.js project template for the Express.js framework.
 
 It is named Optical because it works with Fiber and combines 'fiber-optic'. Silly.
@@ -33,7 +33,6 @@ It is named Optical because it works with Fiber and combines 'fiber-optic'. Sill
 ## ⚙️ Installation
 
 If you do not have Go installed on your device, you are required to install it to run this tool.
-
 
 You can install Optical CLI using Go:
 
@@ -58,29 +57,32 @@ optical -create
 ```bash
 
 Optical CLI version 1.0.0
-┃ What is the name of your project?(e.g 'my-fiber-api','./')                                     
-┃ A new folder with this name will be created.                                                   
-┃ > <your-project-name>                                                                                          
-                                                                                                 
-  Enter your GitHub username.                                                                    
-  This is required to create the go.mod file                                                     
-  > <your-gitub-username>                                                                                           
-                                                                                                 
-  Do you have air installed?                                                                    
-  Air is required for auto-reload                                                                
-    Yes                                                                                          
-  > No                                                                                           
-                                                                                                 
+┃ What is the name of your project?(e.g 'my-fiber-api','./')
+┃ A new folder with this name will be created.
+┃ > <your-project-name>
+
+  Enter your GitHub username.
+  This is required to create the go.mod file
+  > <your-gitub-username>
+
+  Do you have air installed?
+  Air is required for auto-reload
+    Yes
+  > No
+
 enter next
 ```
+
 or
 
 To get help and see all the flags:
+
 ```bash
 optical -h
 ```
 
 After creating the project run this:
+
 ```bash
 cd <your-project-name>
 go mod tidy
@@ -88,6 +90,7 @@ air
 ```
 
 It will run your Fiber App and the output should look like this:
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/c7d06b42-bad8-46ec-9301-c4b0c1b637b9" />
 </p>
@@ -99,28 +102,31 @@ To set up your project further, refer to the [Fiber Official Docs](https://docs.
 ## 🔷 Example
 
 If you run a command like:
+
 ```bash
 optical -create
 ```
+
 ```bash
 Optical CLI version 1.0.0
-┃ What is the name of your project?(e.g 'my-fiber-api','./')                                     
-┃ A new folder with this name will be created.                                                   
-┃ > cyber-fiber                                                                                             
-                                                                                                 
-  Enter your GitHub username.                                                                    
-  This is required to create the go.mod file                                                     
-  > tuhinexe                                                                                             
-                                                                                                 
-  Do you have air installed ?                                                                    
-  Air is required for auto-reload                                                                
-    Yes                                                                                          
-  > No                                                                                           
-                                                                                                 
+┃ What is the name of your project?(e.g 'my-fiber-api','./')
+┃ A new folder with this name will be created.
+┃ > cyber-fiber
+
+  Enter your GitHub username.
+  This is required to create the go.mod file
+  > tuhinexe
+
+  Do you have air installed ?
+  Air is required for auto-reload
+    Yes
+  > No
+
 enter next
 ```
 
 It will create a new Optical project in a directory named `cyber-fiber` with `go.mod` like this :
+
 ```bash
 module github.com/tuhinexe/cyber-fiber
 

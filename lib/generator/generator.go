@@ -40,6 +40,7 @@ func GenerateProject(name, path string, ghUsername string, hasAir bool) error {
 		"config/config.go":         "config.go.tmpl",
 		"go.mod":                   "go.mod.tmpl",
 		".air.toml":                ".air.toml.tmpl",
+		".env":					 "config.env.tmpl",
 	}
 
 	for filePath, templateName := range files {
